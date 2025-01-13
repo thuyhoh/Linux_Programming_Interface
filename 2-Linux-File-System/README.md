@@ -133,7 +133,7 @@ sudo chown group(:user) file
     cmd: action muốn thực hiện
         - F_SETLK: đặt lock, bỏ lock
         - F_GETLK: đọc thông tin lock
-        - flockstr: struct chứathông tin muốn lock 
+        - flockstr: struct chứa thông tin muốn lock 
     */
     struct flock { 
         short l_type;   /* Lock type: F_RDLCK, F_WRLCK, F_UNLCK */ 

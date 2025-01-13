@@ -29,7 +29,7 @@ int main(void)
 	} else {
 		printf("set read lock\n");
 	}
-    
+
 	while(1) {
 		sleep(1);
 	}
