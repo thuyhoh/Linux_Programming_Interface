@@ -35,13 +35,11 @@ FLAG := -I ./
 DST := execute
 all : hello.c main.c
     $(CC) -o $(DST) $S^ $(FLAG) 
+# - $(CC) => giá trị trong biến CC 
+# - $@    => target 
+# - $<    => giá trị bên trái cùng của dependences 
+# - $^    => giá trị bên trong dependences 
 ```
-
-``giải thích:`` \
-\- \$\(CC) $\to$ giá trị trong biến CC \
-\- \$\@    $\to$ target \
-\- \$\<    $\to$ giá trị bên trái cùng của dependences \
-\- \$\^    $\to$ giá trị bên trong dependences 
 
 ### 6. Biến trong Makefile
 - Phép gán trong Makefile
