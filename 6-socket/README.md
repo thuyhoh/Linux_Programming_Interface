@@ -28,7 +28,7 @@
 - Stream socket yêu cầu tạo một kết nối trước khi truyền dữ liệu.
 - Tiến trình khởi tạo kết nối đóng vai trò là client, tiến trình nhận được yêu cầu kết nối là server.
 ![image](socket_flowStreamSocket.png)
- 
+
 ### 2. Flow hoạt động của Datagram Socket
 - Trong Datagram socket vai trò của client và server khá mờ nhạt. 
 - Về cơ bản các tiến trình có thể gửi dữ liệu đến một địa chỉ bất kể địa chỉ đó có tồn tại hay không.
@@ -79,7 +79,9 @@ struct in6_addr {              	/* IPv6 address structure */
 - Địa chỉ của Internet Socket được đặc trưng bởi địa chỉ IP và port. Chúng đều được lưu trữ trên thiết bị dưới dạng số integer.
 - Các thiết bị sử dụng các kiến trúc phần cứng khác nhau sẽ lưu trữ địa chỉ theo thứ tự khác nhau.
 - socket sử dụng một quy ước chung về cách lưu trữ địa chỉ gọi là network byte order ( thật ra là theo thứ tự của Big-endian)
+
 [!image](socket_InternetEndian.png)
+
 ### 3. Các hàm được sử dụng chuyển đổi địa chỉ Socket
 ``` C
 #include <arpa/inet.h>
@@ -98,6 +100,7 @@ uint32_t ntohl(uint32_t net_uint32);
 
 ## IV. 4. Sockets: Unix Domain
 ### 1. Internet Socket Address
+
 - Linux hỗ trợ Internet Socket để giao tiếp giữa các tiến trình trên cùng một thiết bị.
 - Tuy Internet Socket cũng có thể truyền thông trên cùng thiết bị nhưng Unix socket nhanh và dễ sử dụng hơn.
 - Domain là AF_UNIX
@@ -108,6 +111,14 @@ uint32_t ntohl(uint32_t net_uint32);
 \- socket(AF_UNIX, SOCK_STREAM, 0)
 ### 2. Unix Socket Address
 - Sau khi chạy bind() để gán địa chỉ cho socket một socket file sẽ được tạo theo path_name
+
+``` C
+struct sockaddr_un {
+    sa_family_t sun_family;    /* Always AF_UNIX */
+    char sun_path[108];          /* Null-terminated socket pathname */
+};
+```
+
 - Không thể gán một socket vào một path_name đã tồn tại.
 Một path_name chỉ có thể được gán cho một socket.
 - Path_name có thể là đường dẫn tuyệt đối (/home/phonglt/path_name) hoặc tương đối (./path_name)
@@ -115,6 +126,7 @@ Một path_name chỉ có thể được gán cho một socket.
 - Sau khi socket được đóng hay chương trình đã tắt file path_name vẫn còn. Nếu muốn xóa file này ta có thể dùng unlink() hoặc remove().
 - Để kết nối hoặc gửi dữ liệu tới socket yêu cầu tiến trình phải có quyền write với file path_name. 
 - Lệnh bind() sẽ tạo socket file với đầy đủ các quyền cho tất cả tài khoản nhưng ta có thể thay đổi quyền hạn của chúng bằng umask() hoặc đơn giản là thay đổi quyền của thư mục chứa file socket
+
 
 ## V. System call 
 ### 1. System call socket

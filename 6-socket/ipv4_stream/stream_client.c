@@ -71,7 +71,10 @@ int main(int argc, char *argv[])
     if (server_fd == -1)
         handle_error("socket()");
 	
+
     /* Kết nối tới server */
+
+
     if (connect(server_fd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) == -1)
         handle_error("connect()");
 	
