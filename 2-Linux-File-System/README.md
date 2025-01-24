@@ -88,6 +88,18 @@ sudo chown group(:user) file
 ``` C
     int close(int fd);
 ```
+7. System call unlink
+``` C
+int unlink(const char *pathname);
+/*
+*/
+```
+8. System call remove
+``` C
+int remove(const char *pathname);
+/*
+*/
+```
 ## III. quản lý file trong linux
 ![image](file_table.png) \
 \- Kernel điều khiển việc tương tác giữa tiến trình và file thông qua ba bảng: File descriptor table ,Open file table, I-node table
