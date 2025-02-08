@@ -129,10 +129,10 @@ Một path_name chỉ có thể được gán cho một socket.
 
 
 ## V. System call 
+- #include <sys/socket.h>
 ### 1. System call socket
+- 
 ``` C
-#include <sys/socket.h>
-
 int socket(int domain, int type, int protocol);
 /*
     @param[domain]   : tên miền UNIX/IPv4/IPv6
@@ -143,6 +143,7 @@ int socket(int domain, int type, int protocol);
 */
 ```
 ### 2. System call bind
+- 
 ``` C
 int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 /*
@@ -159,6 +160,7 @@ struct sockaddr {
 };
 ``` 
 ### 3. System call listen
+- 
 ``` C
 int listen(int sockfd, int backlog);
 /*
@@ -169,6 +171,7 @@ int listen(int sockfd, int backlog);
 */
 ```
 ### 4. System call accept
+- 
 ``` C
 int accept(int sockfd, struct sockaddr *_Nullable restrict addr, socklen_t *_Nullable restrict addrlen);
 /*
@@ -180,6 +183,7 @@ int accept(int sockfd, struct sockaddr *_Nullable restrict addr, socklen_t *_Nul
 */
 ```
 ### 5. System call connect
+- 
 ``` C
 int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 /*
@@ -191,6 +195,7 @@ int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 */
 ```
 ### 6. System call sendto
+- 
 ``` C
 ssize_t sendto(int sockfd, const void *buf, size_t len, int flags, const struct sockaddr *dest_addr, socklen_t addrlen);
 /*
@@ -202,6 +207,7 @@ ssize_t sendto(int sockfd, const void *buf, size_t len, int flags, const struct 
 */
 ```
 ### 7. System call recvfrom
+- 
 ``` C
 ssize_t recvfrom(int sockfd, void buf[restrict .len], size_t len, int flags, struct sockaddr *_Nullable restrict src_addr, socklen_t *_Nullable restrict addrlen);
 /*
@@ -230,6 +236,7 @@ int setsockopt(int socket, int level, int option_name, const void *option_value,
 */
 ```
 ### 9. System call inet_ntop
+- 
 ``` C
 const char *inet_ntop(int af, const void *restrict src, char dst[restrict .size], socklen_t size);
 /*
