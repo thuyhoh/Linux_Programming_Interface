@@ -6,7 +6,7 @@
 - Pipes là một trong số các phương thức IPC được sử dụng trong việc truyền thông liên tiến trình.
 - Pipes chỉ là giao tiếp một chiều, tức là chúng ta chỉ có thể sử dụng pipe sao cho một quá trình thực hiện ghi vào pipe và quá trình kia đọc từ pipe.
 ## 2 Hoạt động
-- Khi tạo một pipe, nó sẽ nằm trong RAM và được coi là một "virtual file" .
+- Khi tạo một pipe, nó sẽ nằm trong RAM và được coi là một "virtual file".
 - Pipes có thể  sử dụng trong quá trình tạo process.
 - Khi một process ghi vào "virtual file" (hoặc có thể hiểu là pipe) thì một tiến trình liên quan (related-process) khác có thể đọc dữ liệu từ nó.
 - Reading from a pipe:
