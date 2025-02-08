@@ -35,5 +35,19 @@
 9. ps aux| grep ten_process
 
 ### IV. Document
-- Playlist Youtube : https://www.youtube.com/playlist?list=PL831drV1RoWunpiXBC442qlY9FIkMepNI
+[Playlist Youtube](https://www.youtube.com/playlist?list=PL831drV1RoWunpiXBC442qlY9FIkMepNI)
+
+### V. Mục lục
+[1. General Knowledge](https://github.com/thuyhoh/Linux_Programming_N_System/tree/master/1-General-Knowledge)
+[2. file system ](https://github.com/thuyhoh/Linux_Programming_N_System/tree/master/2-Linux-File-System)
+[3. Process ](https://github.com/thuyhoh/Linux_Programming_N_System/tree/master/3-Process)
+[4. Thread ](https://github.com/thuyhoh/Linux_Programming_N_System/tree/master/4-thread)
+[5. Signal ](https://github.com/thuyhoh/Linux_Programming_N_System/tree/master/5-signal)
+[6. Socket ](https://github.com/thuyhoh/Linux_Programming_N_System/tree/master/6-socket)
+[7. Pipes FIFOs](https://github.com/thuyhoh/Linux_Programming_N_System/tree/master/7-pipes-FIFOs)
+[8. Shared memory](https://github.com/thuyhoh/Linux_Programming_N_System/tree/master/8-shared-memory)
+[9. Semaphore](https://github.com/thuyhoh/Linux_Programming_N_System/tree/master/9-semaphore)
+[10. message Queues](https://github.com/thuyhoh/Linux_Programming_N_System/tree/master/10-message-queues)
+[11. Kernal module basic]()
+
  
