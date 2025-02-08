@@ -121,7 +121,7 @@ int pthread_detach(pthread_t thread);
 - Khóa mutex có thể được cấp phát tĩnh hoặc động.
 ``` C
 pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER; // Cấp phát tĩnh
-int pthread_mutex_t(pthread_mutex_t *mutex, const pthread_mutexattr_t *atrr); // cấp phát động
+int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *atrr); // cấp phát động
 /*
 
 */
