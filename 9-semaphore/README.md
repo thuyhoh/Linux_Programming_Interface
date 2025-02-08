@@ -24,24 +24,24 @@
 \- Đọc giá trị hiện tại của semaphore.
 ### 2. Waiting on semaphore
 - Hàm sem_wait () giảm (giảm 1) giá trị của semaphore
-- Nếu semaphore hiện có giá trị lớn hơn 0, sem_wait () trả về ngay lập tức. 
-- Nếu giá trị của semaphore hiện là 0, sem_wait () sẽ block cho đến khi giá trị semaphore tăng trên 0.
+- Nếu semaphore hiện có giá trị lớn hơn 0, sem_wait() trả về ngay lập tức. 
+- Nếu giá trị của semaphore hiện là 0, sem_wait() sẽ block cho đến khi giá trị semaphore tăng trên 0.
 - Sau khi sem_wait() được trả về thì giá trị của semaphore sẽ được giảm đi 1.
 ``` C
-
+int sem_wait(sem_t *sem);
 ```
 - Hàm sem_trywait() là một phiên bản non-blocking của hàm sem_wait().
 ``` C
-
+int sem_trywait(sem_t *sem);
 ```
 - Hàm sem_timedwait() Chỉ thực hiện chờ trong một thời gian nhất định, nếu sau timeout mà giá trị semaphore vẫn bằng 0 thì lỗi sẽ được trả về ETIMEDOUT.
 ``` C
-
+int sem_timedwait(sem_t *restrict sem, const struct timespec *restrict abs_timeout);
 ```
 ### 3. Posting on semaphore
-- Hàm sem_post () tăng (tăng 1) giá trị của semaphore.
+- Hàm sem_post() tăng (tăng 1) giá trị của semaphore.
 ``` C
-
+int sem_post(sem_t *sem);
 ```
 - Nếu giá trị của semaphore bằng 0 thì thực hiện tăng giá trị của semaphore value lên 1. Khi đó các process đang chờ sem_wait() sẽ được đánh thức.
 - Nếu có nhiều process cùng đang chờ thì kernel sử dụng thuật toán round-robin, time-sharing để quyết đinh. 
@@ -50,7 +50,7 @@
 ### 4. Read semaphore value
 - Hàm sem_getvalue() trả về giá trị hiện tại của semaphore
 ``` C
-
+int sem_getvalue(sem_t *restrict sem, int *restrict sval);
 ```
 - Giá trị semaphore được trả về trong con trỏ sval.
 
@@ -58,7 +58,7 @@
 ### 1. Opening named semaphore 
 - sem_open() được sử dụng để tạo một semaphore mới hoặc mở một semaphore đang tồn tại.
 ``` C
-
+sem_t *sem_open(const char *name, int oflag, ... /* mode_t mode, unsigned int value */ );
 ```
 - name: tên định danh semaphore. Mỗi tên liên kết với một semaphore object.
 - oflag: cho biết mode hoạt động của sem_open().
@@ -73,20 +73,20 @@
 - Khi thực hiện sem_open() thì semaphore sẽ được liên kết với process. Hệ thống sẽ ghi lại mối liên kết này.
 - sem_close() sẽ thực hiện kết thúc mối liên kết trên. Giải phóng bất kỳ tài nguyên nào mà hệ thống đã liên kết với semaphore cho process và giảm số lượng các process tham chiếu đến semaphore.
 ``` C
-
+int sem_close(sem_t *sem);
 ```
 ### 3. Removing named semaphore
-- Hàm sem_unlink () xóa semaphore được xác định bằng name và đánh dấu semaphore sẽ bị hủy sau khi tất cả các process ngừng sử dụng nó.
+- Hàm sem_unlink() xóa semaphore được xác định bằng name và đánh dấu semaphore sẽ bị hủy sau khi tất cả các process ngừng sử dụng nó.
 - Tức là semaphore sẽ bị hủy khi tất cả tiến trình sử dụng nó gọi sem_close().
 ``` C
-
+int sem_unlink(const char *name);
 ```
 ## IV. Unnamed Semaphore
 ### 1. Initializing an unnamed semaphore
 - Hàm sem_init() được sử dụng để khởi tạo semaphore và inform cho kernel semaphore được sử dụng để shared giữa các process hoặc giữa các thread trong một process.
 - Đối số pshared cho biết liệu semaphore có được chia sẻ giữa các threads hay giữa các process hay không.
 ``` C
-
+int sem_init(sem_t *sem, int pshared, unsigned int value);
 ```
 \- pshared là 0: thì semaphore sẽ được chia sẻ giữa các thread của process. sem được tạo ra trỏ tới một địa chỉ của heap hoặc global.
 \- pshared khác 0: semaphore được shared giữa các process. sem sẽ là địa chỉ của một vùng nhớ được shared giữa các process (system V hoặc Posix mmap).
@@ -96,5 +96,5 @@
 - Hàm sem_destroy() hủy semaphore, nó phải là một unnamed semaphore đã được khởi tạo trước đó bằng sem_init(). 
 - Sau khi một unnamed semaphore đã bị hủy bằng sem_destroy(), nó có thể được khởi động lại bằng sem_init().
 ``` C
-
+int sem_destroy(sem_t *sem);
 ```
