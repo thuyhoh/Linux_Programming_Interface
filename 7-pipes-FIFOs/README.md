@@ -52,12 +52,28 @@ FIFOs là một loại tệp, chúng ta có thể sử dụng tất cả các l�
     * Client phải request tới để đăng kí.
     * Thêm chi phí (tiền, lập trình).
 #### B2: Xử lý yêu cầu kết nối
-![image](socket_img4_1.png)
-![image](socket_img4_2.png)
+##### Server
+- Tạo một FIFO xử lý request
+- Xử lý bản tin request
+  - check key
+  - check service
+  - giới hạn số lượng kết nối
+- gửi nhận ack chấp nhận/không chấp nhận request
+##### client
+- Tạo FIFO gửi nhận bản tin
+  - Tên = TEMPLATE + PID
+- Đóng bản tin request
+  - Tên 
+  - Yêu cầu service nào
+  - key
+- Gửi request tới server
+  - Server chấp nhận --> Gửi nhận dữ liệu
+  - Server không chấp nhận --> Hủy bỏ FIFO
+
 #### B3: Xử lý bản tin
 - Nhớ lại rằng dữ liệu trong đường ống và FIFO là một luồng byte, ranh giới giữa nhiều bản tin không được bảo toàn.
 - Điều này có nghĩa là khi nhiều bản tin gửi đến một quá trình, chẳng hạn như server, thì người gửi và người nhận phải đồng ý về một số quy ước để tách các thư. 
-\- Kết thúc mỗi thư bằng ký tự phân cách.
+  - Kết thúc mỗi thư bằng ký tự phân cách.
     * Ký tự không bao giờ xuất hiện như một phần của bản tin.
     * Quá trình đọc thông báo phải quét dữ liệu từ FIFO từng byte một cho đến khi tìm thấy ký tự phân tách.
     * Bao gồm header có kích thước cố định với trường độ dài trong mỗi bản tin.
