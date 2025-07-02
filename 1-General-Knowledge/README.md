@@ -5,7 +5,7 @@
 \- Makefile bao gồm filel Makefile và các file .mk
 ### 2. rule trong Makefile
 - cấu trúc một rule
-![image](rule.png)
+![image](./tutorial_img/rule.png)
 \- Target :
 \- Dependences :
 \- Actions :
@@ -88,7 +88,7 @@ rule2 :
 ```
 ## II. C compiling procress
 - quá trình biên dịch C thông qua 4 bước : \
-![image](c-compilation-process%20.png)
+![image](./tutorial_img/c-compilation-process.png)
 ### 1. Pre-Processor
 - mã nguồn biến đổi file *.c thành *.i
 - loại bỏ các comments
@@ -126,7 +126,7 @@ int function(int count, ...);
 ### 2. đặc điểm chung của Static lib và Shared lib
 - Thư viện là một tập hợp các đoạn mã được biên dịch sẵn để có thể được sử dụng lại trong một chương trình.
 - Được chia ra làm 2 loại: Static lib và Shared lib
-![image](static_N_share_lib.png)
+![image](./tutorial_img/static_N_share_lib.png)
 ### 3. tạo ra Static lib và Shared lib
 1. static library
 ``` Makefile

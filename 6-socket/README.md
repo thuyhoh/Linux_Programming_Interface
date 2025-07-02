@@ -21,19 +21,19 @@
 - Cách thức đóng gói dữ liệu.
 - Từ Domain và Type sẽ có một danh sách các protocol tương ứng để ta lựa chọn.
 - Thông thường với một Domain và Type đã chọn chỉ có 1 giao thức có thể dùng nên protocol thường có giá trị 0.
-![image](socket_protocol.png)
+![image](./tutorial_img/socket_protocol.png)
 
 ## II. Flow hoạt động
 ### 1. Flow hoạt động của Stream Socket
 - Stream socket yêu cầu tạo một kết nối trước khi truyền dữ liệu.
 - Tiến trình khởi tạo kết nối đóng vai trò là client, tiến trình nhận được yêu cầu kết nối là server.
-![image](socket_flowStreamSocket.png)
+![image](./tutorial_img/socket_flowStreamSocket.png)
 
 ### 2. Flow hoạt động của Datagram Socket
 - Trong Datagram socket vai trò của client và server khá mờ nhạt. 
 - Về cơ bản các tiến trình có thể gửi dữ liệu đến một địa chỉ bất kể địa chỉ đó có tồn tại hay không.
 - Trong quá trình truyền nhận ta tạm coi tiến trình muốn gửi dữ liệu là client và tiến trình nhận dữ liệu là server.
-![image](socket_flowDatagramSocket.png)
+![image](./tutorial_img/socket_flowDatagramSocket.png)
 
 ## III. Sockets: Internet Domain socket
 ### 1. Internet Socket Address
@@ -80,7 +80,7 @@ struct in6_addr {              	/* IPv6 address structure */
 - Các thiết bị sử dụng các kiến trúc phần cứng khác nhau sẽ lưu trữ địa chỉ theo thứ tự khác nhau.
 - socket sử dụng một quy ước chung về cách lưu trữ địa chỉ gọi là network byte order ( thật ra là theo thứ tự của Big-endian)
 
-[!image](socket_InternetEndian.png)
+[!image](./tutorial_img/socket_InternetEndian.png)
 
 ### 3. Các hàm được sử dụng chuyển đổi địa chỉ Socket
 ``` C

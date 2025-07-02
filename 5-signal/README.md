@@ -13,7 +13,7 @@
 \- Catch and handle the signal: Kernel sẽ tạm dừng thực thi main thread và nhảy tới hàm xử lý signal được user đăng kí trong process (signal handler). SIGINT và SIGTERM là hai signal thường được dùng. SIGKILL và SIGSTOP không thể catch.
 \- Perform the default action: hành động này đã được định nghĩa săn 
 
-![signal Processing](Signal_Processing.png)
+![signal Processing](./tutorial_img/Signal_Processing.png)
 ## II. Signal Handler
 - Chúng ta đăng kí việc xử lý một signal thông qua system call signal().
 - Signal là một software interrupt nên nó khá nhạy cảm về mặt thời gian thực thi. Khi signal handler được thực thi nó sẽ chiếm hoàn toàn cpu của process. Cần phải thoát ra hàm xử lý signal nhanh nhất có thể.

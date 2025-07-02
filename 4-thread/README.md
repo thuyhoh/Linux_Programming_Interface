@@ -6,9 +6,9 @@
 - Trên một hệ thống mutil-core. Nhiều threads có thể hoạt động song song.
 - Nếu một thread bị block, các thread khác vẫn hoạt động bình thường.
 - Mỗi khi một thread được tạo, chúng sẽ được đặt trong stack segments. \
-![image](ThreadinStack.png)
+![image](./tutorial_img/ThreadinStack.png)
 ### 2. Context switching
-![image](ContextSwitching.png) 
+![image](./tutorial_img/ContextSwitching.png) 
 ### 3. so sánh Thread với Process
 1. Context switching time
 - Process cần nhiều thời gian hơn vì chúng nặng hơn.

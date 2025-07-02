@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
 ## III. Memory layout của Process
 \- Bộ nhớ cấp phát cho mỗi một process được chia thành nhiều phần khác nhau. Thông thường chúng được gọi là các segments (các phân đoạn vùng nhớ). \
-![image](Process_Memory_Layout.png)
+![image](./tutorial_img/Process_Memory_Layout.png)
 ### 1. Text segment 
 - Chứa các chỉ lệnh ngôn ngữ máy (machine-language) của program
 -  Segment này có quyền read-only.
@@ -54,10 +54,10 @@ int main(int argc, char *argv[])
             - > 0 : trả về cho tiến trình cha. chứa giá trị Process id của tiến trình con 
     */
 ```
-![image](thaotacProcess.png)
+![image](./tutorial_img/thaotacProcess.png)
 ### 2. Chạy một tiên trình mới
 - Trong nhiều trường hợp bạn đang có một tiến trình A đang thực thi và bạn muốn chạy một chương trình B nào đó từ tiến trình A hoặc con của nó. Điều này hoàn toàn có thể thực hiện được thông qua việc sử dụng một danh sách các hàm thuộc dòng exec. \
-![exec_family](exce_family.png)
+![exec_family](./tutorial_img/exce_family.png)
 ```C
 // example : chạy command line trong linux ls -lah
 int main(void)
@@ -78,7 +78,7 @@ int exit(int status);
 ```
 2. Kết thúc bất thường(abnormally termination)
 - Một process có thể bị kết thúc bằng cách sử dụng command-line kill hoặc system call kill trong stdsignal.h trong linux \
-![image](kill.png)
+![image](./tutorial_img/kill.png)
 ```linux bash
 kill -l  /-> hien thi SIGNAL_Number
 kill -SIGNAL_Number PID_number

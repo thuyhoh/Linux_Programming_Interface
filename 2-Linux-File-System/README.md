@@ -11,7 +11,7 @@
 - Socket file: file đại diện cho 1 socket.
 - Pipe file: file đại diện cho 1 pipe 
 ### 2. Hiển thị thông tin file
-![image](file_inf.png)
+![image](./tutorial_img/file_inf.png)
 - các thành phần cơ bản của một file bao gồm 
 \- tên file
 \- thời điểm chỉnh sửa file lần cuối
@@ -25,7 +25,7 @@
 4. tên user
 5. số hardlink của file
 6. loại file, quyền của file \
-![image](img.png)
+![image](./tutorial_img/img.png)
 - loại file bao gồm : \
 \- '-' : Regular file \
 \- 'd' : Directories file \
@@ -52,6 +52,7 @@ chmod u-0666 file
 sudo chown group(:user) file
 ```
 ## II. đọc ghi file trong linux
+### a. Đọc ghi file synchronous
 \- kernel cung cấp một số system call cơ bản như: open, read, write, lseek, close
 1. open
 ``` C
@@ -74,15 +75,26 @@ sudo chown group(:user) file
         @param[fd]
         @param[buffer]
         @param[count]
+        @retval: return số byte đã đọc
+                 return 0 khi đã đọc đến cuối file
     */
 ```
 4. write
 ``` C
     ssize_t write(int fd, void *buffer, size_t count);
+    /*
+        @retval: return số byte đã được ghi
+    */
 ```
 5. lseek
 ``` C
     off_t lseek(int fd, off_t offset, int whence);
+    /*
+        @param[whence]: 
+            SEEK_SET
+            SEEK_END
+            SEEK_CUR
+    */
 ```
 6. close
 ``` C
@@ -100,8 +112,23 @@ int remove(const char *pathname);
 /*
 */
 ```
+9. System call sys/fsys
+
+``` C
+/*
+    @brief: được sử dụng để sys dữ liệu toàn bộ file được lưu trong vùng cache/ram đến ổ nhớ cứng 
+*/
+void sys(void);
+/*
+    @brief: được sử dụng để sys dữ liệu của file có fd được lưu trong vùng cache/ram đến ổ nhớ cứng 
+*/
+void fsys(int fd);
+```
+
+### b. Asynchronous read write
+
 ## III. quản lý file trong linux
-![image](file_table.png) \
+![image](./tutorial_img/file_table.png) \
 \- Kernel điều khiển việc tương tác giữa tiến trình và file thông qua ba bảng: File descriptor table ,Open file table, I-node table
 1. i-node table
 \- mỗi phần tử trong inode table đại diện cho 1 file chưa thông tin file đó
@@ -110,7 +137,7 @@ int remove(const char *pathname);
 
 \- Khi tiến trình dùng lệnh read()/write()
 * để tránh làm hỏng bộ nhớ do nhiều lần đọc ghi file trực tiếp với ổ nhớ cứng => đọc ghi file qua một page cache \
-![image](w_r.png)
+![image](./tutorial_img/w_r.png)
 * có thể đọc trực tiếp thông qua system call
 ## IV. File locking
 ### 1. Ứng dụng 
@@ -121,7 +148,7 @@ int remove(const char *pathname);
 - Bước 3: Sau khi đọc/ghi xong gỡ trạng thái lock ra khỏi I-node của file.
 ### 3. file lock System call
 - Kernel cung cấp 2 system call để quản lý locking file
-![image](file_lock_system_call.png)
+![image](./tutorial_img/file_lock_system_call.png)
 1. flock
 - Flock dựa vào thông tin file descriptor để đặt trạng thái lock vào i-node table.
 ``` C
@@ -135,7 +162,7 @@ int remove(const char *pathname);
         - LOCK_NB: nếu không dùng flag này hàm flock sẽ không kết thúc cho tới khi set được lock.
     */
 ```
-![image](EX_SH.png)
+![image](./tutorial_img/EX_SH.png)
 
 2. fcntl
 ``` C
