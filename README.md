@@ -26,6 +26,10 @@
 ### 3. Cấu hình trên Vscode
 1.  Lấy IP  
 ![image](./tutorial_img/IPconfig_linux.png)
+2. tải gói tài nguyên trên linux: 
+``` bash
+sudo apt install net-tools openssh-server -y 
+```
 3. Cài extension SFTP 
 4. Tổ hợp phím CTRL + P $\to$ chọn SFTP:config
 5. Cấu hình trên sftp.json file 
